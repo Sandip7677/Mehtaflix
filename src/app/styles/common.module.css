@@ -140,6 +140,7 @@
 
     .card_section{
         justify-content: center;
+        margin:1rem 0;
     }
 
 }
