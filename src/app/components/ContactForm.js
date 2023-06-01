@@ -3,6 +3,9 @@
 import styles from "@/app/contact/contact.module.css";
 import { Mulish } from "next/font/google";
 import { useState } from "react";
+import { db } from "../../../fb";
+import { collection, addDoc } from "firebase/firestore";
+
 const mulish = Mulish({
   subsets: ["latin"],
   display: "swap",
@@ -27,10 +30,36 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const { username, email, phone, message } = user;
+
+    if (username && email && phone && message) {
+      try {
+        const docRef = await addDoc(collection(db, "feed"), {
+          name: user.username,
+          mail: user.email,
+          contact: user.phone,
+          message: user.message,
+        });
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+
+      setUser({
+        username: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+      alert("Thank you for your feedback");
+    } else {
+      alert("Please fill all the data");
+      return;
+    }
   };
 
   return (
-    <form className={styles.contact_form} onSubmit={handleSubmit}>
+    <form className={styles.contact_form} method="POST">
       <div className={styles.input_field}>
         <label htmlFor="username" className={styles.label}>
           Enter your name
@@ -108,7 +137,11 @@ const ContactForm = () => {
           </p>
         )}
 
-        <button type="submit" className={mulish.className}>
+        <button
+          type="submit"
+          className={mulish.className}
+          onClick={handleSubmit}
+        >
           Send Message
         </button>
       </div>
