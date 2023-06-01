@@ -1,6 +1,6 @@
 import style from "@/app/styles/common.module.css";
 import Moviecard from "../components/Moviecard";
-import { resolve } from "styled-jsx/css";
+// import { resolve } from "styled-jsx/css";
 
 const Movie = async () => {
   await new Promise((resolve) => setTimeout(resolve, 2000));

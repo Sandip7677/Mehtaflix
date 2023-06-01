@@ -16,7 +16,7 @@
     top:13px;
     left:122px;
     font-weight: 700;
-    color: #e50914;
+    color: #2f90d1;
 }
 .navbar_brand {
     text-align: left;
@@ -56,7 +56,7 @@
     transform: translateY(-50%);
     width: 100%;
     height: .5rem;
-    background-color: #e50914;
+    background-color: #2f90d1;
     border-radius: 10px /10px;
     left: -100%;
 }
@@ -122,7 +122,7 @@
     }
 
     .mobile-nav-icon:hover, .close-outline:hover{
-        color: #e50914;
+        color: #2f90d1;
     }
 
     /* hide the original nav menu  */
@@ -152,7 +152,7 @@
     }
 
     .navbarList .navbarItem a:hover {
-        color: #e50914;
+        color: #2f90d1;
     }
 
     /*when user click on the open menu icon*/
